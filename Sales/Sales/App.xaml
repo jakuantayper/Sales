@@ -9,6 +9,10 @@
             <!-- Locator -->
 
             <infra:InstanceLocator x:Key="Locator"/>
+            <!-- Parameters -->
+
+            <x:String x:Key="UrlAPI">http://jakuantayper-001-site10.atempurl.com</x:String>
+
         </ResourceDictionary>
 
     </Application.Resources>

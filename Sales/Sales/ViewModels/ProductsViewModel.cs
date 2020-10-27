@@ -34,7 +34,15 @@
         private async void LoadProducts()
         {
             this.IsRefreshing = true;
-            var response = await this.apiService.GetList<Product>("http://jakuantayper-001-site10.atempurl.com", "/api", "/Products");
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.isRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
+            }
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var response = await this.apiService.GetList<Product>(url, "/api", "/Products");
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;

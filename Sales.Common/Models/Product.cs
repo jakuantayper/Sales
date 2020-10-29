@@ -39,7 +39,7 @@ using System.ComponentModel.DataAnnotations;
                 {
                     return "noproduct";
                 }
-                return $"http://jakuantayper-001-site9.atempurl.com/{this.ImagePath.Substring(1)}";
+                return $"http://jakuantayper-001-site10.atempurl.com/{this.ImagePath.Substring(1)}";
             }
             
         }

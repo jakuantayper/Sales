@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.EditProductPage"
+             BindingContext ="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:TraslateExtensions EditProduct}">
+    <ContentPage.Content>
+        <ScrollView 
+            BindingContext="{Binding EditProduct}"
+            Padding="5">
+            <StackLayout>
+                <Image
+                    Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label 
+                    FontSize="Small" 
+                    HorizontalOptions="Center"
+                    Text="{i18n:TraslateExtensions ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:TraslateExtensions Description}"
+                        VerticalOptions=" Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Product.Description}"
+                        Placeholder="{i18n:TraslateExtensions DescriptionPlaceHolder}">
+                    </Entry>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="{i18n:TraslateExtensions Price}"
+                         VerticalOptions=" Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Keyboard="Numeric"
+                        Text="{Binding Product.Price}"
+                        Placeholder="{i18n:TraslateExtensions PricePlaceHolder}">
+                    </Entry>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="{i18n:TraslateExtensions Remarks}"
+                         VerticalOptions=" Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Product.Remarks}"
+                        VerticalOptions="FillAndExpand">
+                    </Editor>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        HorizontalOptions="Start"
+                        Text="{i18n:TraslateExtensions IsAvailable}"
+                         VerticalOptions=" Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        HorizontalOptions="End"
+                        Text="{Binding Product.IsAvailable}">
+                    </Entry>
+                </Grid>
+
+                <ActivityIndicator 
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+
+                </ActivityIndicator>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Button 
+                        BackgroundColor="Navy"
+                        BorderRadius ="23"
+                        Command="{Binding SaveCommand}"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        TextColor="white"
+                        Text="{i18n:TraslateExtensions Save}">
+                    </Button>
+                    <Button 
+                        BackgroundColor="Red"
+                        BorderRadius ="23"
+                        Command="{Binding DeleteCommand}"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        TextColor="white"
+                        Text="{i18n:TraslateExtensions Delete}">
+                    </Button>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

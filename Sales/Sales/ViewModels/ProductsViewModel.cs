@@ -7,21 +7,25 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
 
     public class ProductsViewModel : BaseViewModel 
     {
         #region Attributes
+
         private APIService apiService;
 
         private bool isRefreshing;
+
+        private ObservableCollection<ProductItemViewModel> products;
         #endregion
 
         #region Properties
 
-        private ObservableCollection<Product> products;
-        public ObservableCollection<Product> Products 
+        public List<Product> MyProducts { get; set; }
+        public ObservableCollection<ProductItemViewModel> Products 
         {
             get { return this.products; }
             set { this.SetValue(ref this.products, value);}
@@ -79,9 +83,26 @@
                 return;
             }
 
-            var List = (List<Product>)response.Result;
-            this.Products = new ObservableCollection<Product>(List);
+            this.MyProducts = (List<Product>)response.Result;
+            this.RefreshList();
             this.IsRefreshing = false;
+        }
+
+        public void RefreshList()
+        {
+            var mylistProductItemViewModel = MyProducts.Select(p => new ProductItemViewModel
+            {
+                Description = p.Description,
+                ImageArray = p.ImageArray,
+                ImagePath = p.ImagePath,
+                IsAvailable = p.IsAvailable,
+                Price = p.Price,
+                Productid = p.Productid,
+                PublishOn = p.PublishOn,
+                Remarks = p.Remarks,
+            });
+            this.Products = new ObservableCollection<ProductItemViewModel>(
+                mylistProductItemViewModel.OrderBy (p => p.Description ));
         }
         #endregion
 

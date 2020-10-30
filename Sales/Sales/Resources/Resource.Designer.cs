@@ -97,6 +97,33 @@ namespace Sales.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure to delete this?.
+        /// </summary>
+        public static string DeleteConfirmation {
+            get {
+                return ResourceManager.GetString("DeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Description.
         /// </summary>
         public static string Description {
@@ -120,6 +147,24 @@ namespace Sales.Resources {
         public static string DescriptionPlaceHolder {
             get {
                 return ResourceManager.GetString("DescriptionPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit Product.
+        /// </summary>
+        public static string EditProduct {
+            get {
+                return ResourceManager.GetString("EditProduct", resourceCulture);
             }
         }
         
@@ -151,11 +196,29 @@ namespace Sales.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Is Available.
+        /// </summary>
+        public static string IsAvailable {
+            get {
+                return ResourceManager.GetString("IsAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Take a new Picture.
         /// </summary>
         public static string NewPicture {
             get {
                 return ResourceManager.GetString("NewPicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -228,6 +291,15 @@ namespace Sales.Resources {
         public static string TurnOnInternet {
             get {
                 return ResourceManager.GetString("TurnOnInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

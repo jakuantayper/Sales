@@ -10,7 +10,6 @@
     using Common.Models;
     using Helpers;
     using System.Net.Http.Headers;
-
     public class APIService
     {
 
@@ -346,6 +345,47 @@
             catch (Exception ex)
             {
 
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> GetUser(string urlBase, string prefix, string controller, string email, string tokentype, string accesstoken)
+        {
+            try
+            {
+                var getUserRequest = new GetUserRequest
+                {
+                    Email = email,
+                };
+                var request = JsonConvert.SerializeObject(getUserRequest);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokentype, accesstoken);
+                var url = $"{prefix}{controller}";
+                var response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+                var user = JsonConvert.DeserializeObject<MyUserASP>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = user,
+                };
+            }
+            catch (Exception ex)
+            {
                 return new Response
                 {
                     IsSuccess = false,

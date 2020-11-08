@@ -1,25 +1,37 @@
 ﻿namespace Sales.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
+    using Sales.Helpers;
     using Sales.Views;
     using Xamarin.Forms;
     public class MainViewModel
     {
 
         #region properties
-      public EditProductViewModel EditProduct { get; set; }
+
+        public LoginViewModel Login { get; set; }
+
+        public EditProductViewModel EditProduct { get; set; }
         public ProductsViewModel Products { get; set; }
 
         public AddProductViewModel AddProduct { get; set; }
+
+        public RegisterViewModel Register { get; set; }
+
+        public ObservableCollection<MenuItemViewModel>Menu { get; set; }
         #endregion
 
         #region Contructors
         public MainViewModel()
         {
             instance = this;
-            this.Products = new ProductsViewModel();
+            this.LoadMenu();
         }
+
+      
         #endregion
 
         #region Singleton
@@ -35,6 +47,31 @@
         }
         #endregion
 
+        #region Methods
+  private void LoadMenu()
+        {
+            this.Menu = new ObservableCollection<MenuItemViewModel>();
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "Info",
+                PageName = "AboutPage",
+                Title = Languages.About,
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "Setup",
+                PageName = "SetupPage",
+                Title = Languages.Setup,
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "Exit",
+                PageName = "LoginPage",
+                Title = Languages.Exit,
+            });
+        }
+        #endregion
+
         #region Commands
         public ICommand AddProductCommand
         {
@@ -47,7 +84,7 @@
         private async void GoToAddProduct()
         {
             this.AddProduct = new AddProductViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new AddProductPage());
+            await App.Navigator.PushAsync(new AddProductPage());
         } 
         #endregion
     }

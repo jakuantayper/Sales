@@ -98,7 +98,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.Delete(url, prefix, controller, this.Product.Productid);
+            var response = await this.apiService.Delete(url, prefix, controller, this.Product.Productid, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
@@ -119,7 +119,7 @@
 
             this.IsRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
         }
 
         public ICommand ChangeImageCommand
@@ -213,7 +213,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.Productid );
+            var response = await this.apiService.Put(url, prefix, controller, this.Product, this.Product.Productid, Settings.TokenType, Settings.AccessToken);
 
             if (!response.IsSuccess)
             {
@@ -235,7 +235,7 @@
             productsViewModel.RefreshList();
             this.IsRunning = false;
             this.IsEnabled = true;
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
         }
         #endregion
     }

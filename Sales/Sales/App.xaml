@@ -14,7 +14,8 @@
             <x:String x:Key="UrlAPI">http://jakuantayper-001-site10.atempurl.com</x:String>
             <x:String x:Key="UrlPrefix">/API</x:String>
             <x:String x:Key="UrlProductsController">/Products</x:String>
-
+            <x:String x:Key="UrlUsersController">/Users</x:String>
+            
         </ResourceDictionary>
 
     </Application.Resources>

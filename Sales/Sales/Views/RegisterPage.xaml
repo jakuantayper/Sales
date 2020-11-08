@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.RegisterPage"
+             BindingContext ="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:TraslateExtensions Register}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Register}">
+            <StackLayout
+                Padding="5">
+                <Image
+                    Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:TraslateExtensions ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:TraslateExtensions FirstName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding FirstName}"
+                        Placeholder="{i18n:TraslateExtensions FirstNamePlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="{i18n:TraslateExtensions LastName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding LastName}"
+                        Placeholder="{i18n:TraslateExtensions LastNamePlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="{i18n:TraslateExtensions EMail}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Keyboard="Email"
+                        Text="{Binding EMail}"
+                        Placeholder="{i18n:TraslateExtensions EMailPlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="{i18n:TraslateExtensions Phone}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Keyboard="Telephone"
+                        Text="{Binding Phone}"
+                        Placeholder="{i18n:TraslateExtensions PhonePlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="{i18n:TraslateExtensions Address}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding Address}"
+                        Placeholder="{i18n:TraslateExtensions AddressPlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="{i18n:TraslateExtensions Password}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        IsPassword="true"
+                        Text="{Binding Password}"
+                        Placeholder="{i18n:TraslateExtensions PasswordPlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="{i18n:TraslateExtensions PasswordConfirm}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        IsPassword="true"
+                        Text="{Binding PasswordConfirm}"
+                        Placeholder="{i18n:TraslateExtensions PasswordConfirmPlaceHolder}">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="{i18n:TraslateExtensions Save}"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.LoginPage"
+             BindingContext ="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:TraslateExtensions Login}">
+               
+    <ContentPage.Content>
+        <ScrollView 
+            BindingContext="{Binding Login}">
+            <StackLayout
+                Padding="5">
+                <Image 
+                    HeightRequest="150"
+                    Source="Logo">
+
+                </Image>
+                <Grid
+                    Margin="10,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="{i18n:TraslateExtensions EMail}"
+                        VerticalOptions=" Center">
+                    </Label>
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Text="{Binding EMail}"
+                        Placeholder="{i18n:TraslateExtensions EMailPlaceHolder}">
+                    </Entry>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="{i18n:TraslateExtensions Password}"
+                        VerticalOptions=" Center">
+                    </Label>
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsPassword="true"
+                        Text="{Binding Password}"
+                        Placeholder="{i18n:TraslateExtensions PasswordPlaceHolder}">
+                    </Entry>
+                </Grid>
+                <StackLayout
+                    Margin="10,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:TraslateExtensions Rememberme}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch 
+                        IsToggled="{Binding IsRemembered}"
+                        HorizontalOptions="End">
+                    </Switch>
+                </StackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{i18n:TraslateExtensions Forgot}"
+                    TextColor="Blue"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <StackLayout
+                    Margin="40,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Button
+                        BackgroundColor="Navy"
+                        BorderRadius="23"
+                        Command="{Binding LoginCommand}"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="{i18n:TraslateExtensions Login}"
+                        TextColor="white">
+                    </Button>
+                    <Button
+                        BackgroundColor="Purple" 
+                        BorderRadius="23"
+                        Command="{Binding RegisterCommand}"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="{i18n:TraslateExtensions Register}"
+                        TextColor="white">
+                    </Button>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="70"
+                        Source="ic_chevron_right"
+                        WidthRequest="70">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="70"
+                        Source="Instagram"
+                        WidthRequest="70">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginInstagramCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="70"
+                        Source="Twitter"
+                        WidthRequest="70">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginTwitterCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

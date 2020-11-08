@@ -13,6 +13,13 @@
         <StackLayout
             BindingContext="{Binding Products}"
             Padding="10">
+            <SearchBar
+                HeightRequest="30"
+                Placeholder="{i18n:TraslateExtensions Search}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter}">
+                
+            </SearchBar>
             <ListView 
                 HasUnevenRows="true"
                 IsRefreshing="{Binding IsRefreshing}"
